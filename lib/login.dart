@@ -68,28 +68,16 @@ class _loginState extends State<login> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              if (_isLogin) SizedBox(height: 200,),
+             SizedBox(height: 200,),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     if(!_isLogin)SizedBox(height: 50,),
-                     Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 30),),
+                     Center(child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 30),)),
                     SizedBox(height: 30,),
                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blue,
-                              blurRadius: 1,
-                              offset: Offset(0, 1),
-                              spreadRadius: 5
-                            )
-                          ]
-                      ),
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -114,18 +102,13 @@ class _loginState extends State<login> {
                                 },
                                 onSaved: (val) => _username = val!,
                                 decoration: InputDecoration(
-                                    prefixIcon: Padding(
-                                  padding: EdgeInsets.only(
-                                    top: 2,
+
+                                  labelText: 'Username',
+                                  prefixIcon: Icon(
+                                    Icons.person,
                                   ),
-                                  child: Icon(
-                                    Icons.person_outlined,
-                                    color: const Color(0xff7B6F72),
+                                  border: OutlineInputBorder(
                                   ),
-                                ),
-                                    border: InputBorder.none,
-                                    hintText: "Username",
-                                    hintStyle: TextStyle(color: Colors.grey)
                                 ),
                               ),
                             ),
@@ -150,18 +133,11 @@ class _loginState extends State<login> {
                                 onSaved: (val) => _email = val!,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.only(
-                                        top: 2,
-                                      ),
-                                      child: Icon(
-                                          Icons.email_outlined,
-                                        color: const Color(0xff7B6F72),
-                                      ),
-                                    ),
-                                    border: InputBorder.none,
-                                    hintText: "Email",
-                                    hintStyle: TextStyle(color: Colors.grey)
+                                  labelText: 'Email',
+                                  prefixIcon: Icon(
+                                    Icons.email_outlined,
+                                  ),
+                                  border: OutlineInputBorder(),
                                 ),
                               ),
                             ),
@@ -178,19 +154,11 @@ class _loginState extends State<login> {
                                 onSaved: (val) => _password = val!,
                                 obscureText: true,
                                 decoration: InputDecoration(
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.only(
-                                        top: 2,
-                                      ),
-                                      child: Icon(
-                                          Icons.lock_outline,
-                                        color: const Color(0xff7B6F72),
-                                      ),
-                                    ),
-
-                                    border: InputBorder.none,
-                                    hintText: "Password",
-                                    hintStyle: TextStyle(color: Colors.grey)
+                                  labelText: 'Password',
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                  ),
+                                  border: OutlineInputBorder(),
                                 ),
                               ),
                             ),
@@ -215,18 +183,11 @@ class _loginState extends State<login> {
                                 },
                                 onSaved: (val) => _number = val!,
                                 decoration: InputDecoration(
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.only(
-                                        top: 2,
-                                      ),
-                                      child: Icon(
-                                        Icons.phone,
-                                        color: const Color(0xff7B6F72),
-                                      ),
-                                    ),
-                                    border: InputBorder.none,
-                                    hintText: "phone number",
-                                    hintStyle: TextStyle(color: Colors.grey)
+                                  labelText: 'Phone Number',
+                                  prefixIcon: Icon(
+                                    Icons.phone,
+                                  ),
+                                  border: OutlineInputBorder(),
                                 ),
 
                               ),
@@ -248,7 +209,7 @@ class _loginState extends State<login> {
                               shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(20.0)),
                             ),
-                            child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.white,fontSize: 26),),
+                            child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.white,fontSize: 20),),
                           ),
 
                     ),
@@ -298,9 +259,8 @@ class _loginState extends State<login> {
 
 
     //
-    Get.offAll(MicScreen());
+    Get.to(MicScreen());
   }
-
 
 
 }
