@@ -212,6 +212,7 @@ class _loginState extends State<login> {
                             child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.white,fontSize: 20),),
                           ),
 
+
                     ),
 
                     SizedBox(height: 30,),
