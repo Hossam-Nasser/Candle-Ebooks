@@ -1,10 +1,16 @@
 //import 'package:AudioBooks/book_home.dart';
+import 'package:candle_ebookv2/image_fuction/image_fuction.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'book_home.dart';
 import 'login.dart';
 
 class BooksProfile extends StatelessWidget {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,16 +56,13 @@ class BooksProfile extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        FlatButton(
-                          onPressed: () {},
-                          child: Text(
-                            "EDIT",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Colors.blue[800],
-                              fontSize: 24,
-                            ),
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          //crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton(onPressed: ()=>ImageFromPicker().pickImage(ImageSource.camera), icon:Icon(Icons.add_a_photo),iconSize: 45,color: Colors.blue ),
+                            IconButton(onPressed: ()=>ImageFromPicker().pickImage(ImageSource.gallery), icon:Icon(Icons.image),iconSize: 45,color: Colors.blue ),
+                          ],
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,

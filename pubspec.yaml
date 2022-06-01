@@ -43,6 +43,8 @@ dependencies:
   get: ^4.6.5
   flutter_pdfview: ^1.2.1
   http: ^0.13.4
+  flutter_tts: ^3.4.0
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:

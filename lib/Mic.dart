@@ -107,7 +107,6 @@ class _MyAppState extends State<MicScreen> {
             if (isRecord) {
               stopRecording();
               Get.to(PdfViewerPage());
-
             }
             else {
               startRecording();
