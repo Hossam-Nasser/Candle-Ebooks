@@ -65,184 +65,195 @@ class _loginState extends State<login> {
                opacity: 0.4
            )
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-             SizedBox(height: 200,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    if(!_isLogin)SizedBox(height: 50,),
-                     Center(child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 30),)),
-                    SizedBox(height: 30,),
-                   Container(
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          children: <Widget>[
-                            if (!_isLogin) Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(
-                                      color: Colors.white70
-                                  ))
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+               SizedBox(height: 200,),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      if(!_isLogin)SizedBox(height: 50,),
+                       Center(child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 30),)),
+                      SizedBox(height: 30,),
+                     Container(
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            children: <Widget>[
+                              if (!_isLogin) Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(
+                                        color: Colors.white70
+                                    ))
+                                ),
+                                child: Container(
+                                  color: Colors.white70,
+                                  child: TextFormField(
+                                    autocorrect: true,
+                                    enableSuggestions: false,
+                                    textCapitalization: TextCapitalization.words,
+                                    key: ValueKey('username'),
+                                    validator: (val) {
+                                      if (val!.isEmpty || !(val.length > 4)) {
+                                        return "please enter at least 4 char";
+                                      }
+                                      return null;
+                                    },
+                                    onSaved: (val) => _username = val!,
+                                    decoration: InputDecoration(
+                                      labelText: 'Username',
+                                      prefixIcon: Icon(
+                                        Icons.person,
+                                      ),
+                                      border: OutlineInputBorder(
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              child: TextFormField(
-                                autocorrect: true,
-                                enableSuggestions: false,
-                                textCapitalization: TextCapitalization.words,
-                                key: ValueKey('username'),
-                                validator: (val) {
-                                  if (val!.isEmpty || !(val.length > 4)) {
-                                    return "please enter at least 4 char";
-                                  }
-                                  return null;
-                                },
-                                onSaved: (val) => _username = val!,
-                                decoration: InputDecoration(
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(
+                                        color: Colors.white70
+                                    ))
+                                ),
+                                child: Container(
+                                  color: Colors.white70,
+                                  child: TextFormField(
+                                    autocorrect: false,
+                                    enableSuggestions: true,
+                                    textCapitalization: TextCapitalization.none,
+                                    key: ValueKey('email'),
+                                    validator: (val) {
+                                      if (val!.isEmpty || !val.contains('@')) {
+                                        return "please enter a valid email address";
+                                      }
+                                      return null;
+                                    },
+                                    onSaved: (val) => _email = val!,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      labelText: 'Email',
+                                      prefixIcon: Icon(
+                                        Icons.email_outlined,
+                                      ),
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                child: Container(
+                                  color: Colors.white70,
+                                  child: TextFormField(
+                                    key: ValueKey('password'),
+                                    validator: (val) {
+                                      if (val!.isEmpty || val.length < 7) {
+                                        return "please enter at least 7 char";
+                                      }
+                                      return null;
+                                    },
+                                    onSaved: (val) => _password = val!,
+                                    obscureText: true,
+                                    decoration: InputDecoration(
+                                      labelText: 'Password',
+                                      prefixIcon: Icon(
+                                        Icons.lock,
+                                      ),
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              if (!_isLogin) Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(
+                                        color: Colors.white70
+                                    ))
+                                ),
+                                child: Container(
+                                  color: Colors.white70,
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.number,
+                                    autocorrect: true,
+                                    enableSuggestions: false,
+                                    textCapitalization: TextCapitalization.words,
+                                    key: ValueKey('number'),
+                                    validator: (val) {
+                                      if (val!.isEmpty || !(val.length > 4)) {
+                                        return "please enter valid number";
+                                      }
+                                      return null;
+                                    },
+                                    onSaved: (val) => _number = val!,
+                                    decoration: InputDecoration(
+                                      labelText: 'Phone Number',
+                                      prefixIcon: Icon(
+                                        Icons.phone,
+                                      ),
+                                      border: OutlineInputBorder(),
+                                    ),
 
-                                  labelText: 'Username',
-                                  prefixIcon: Icon(
-                                    Icons.person,
-                                  ),
-                                  border: OutlineInputBorder(
                                   ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(
-                                      color: Colors.white70
-                                  ))
-                              ),
-                              child: TextFormField(
-                                autocorrect: false,
-                                enableSuggestions: true,
-                                textCapitalization: TextCapitalization.none,
-                                key: ValueKey('email'),
-                                validator: (val) {
-                                  if (val!.isEmpty || !val.contains('@')) {
-                                    return "please enter a valid email address";
-                                  }
-                                  return null;
-                                },
-                                onSaved: (val) => _email = val!,
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
-                                  labelText: 'Email',
-                                  prefixIcon: Icon(
-                                    Icons.email_outlined,
-                                  ),
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              child: TextFormField(
-                                key: ValueKey('password'),
-                                validator: (val) {
-                                  if (val!.isEmpty || val.length < 7) {
-                                    return "please enter at least 7 char";
-                                  }
-                                  return null;
-                                },
-                                onSaved: (val) => _password = val!,
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  labelText: 'Password',
-                                  prefixIcon: Icon(
-                                    Icons.lock,
-                                  ),
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                            ),
-                            if (!_isLogin) Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(
-                                      color: Colors.white70
-                                  ))
-                              ),
-                              child: TextFormField(
-                                keyboardType: TextInputType.number,
-                                autocorrect: true,
-                                enableSuggestions: false,
-                                textCapitalization: TextCapitalization.words,
-                                key: ValueKey('number'),
-                                validator: (val) {
-                                  if (val!.isEmpty || !(val.length > 4)) {
-                                    return "please enter valid number";
-                                  }
-                                  return null;
-                                },
-                                onSaved: (val) => _number = val!,
-                                decoration: InputDecoration(
-                                  labelText: 'Phone Number',
-                                  prefixIcon: Icon(
-                                    Icons.phone,
-                                  ),
-                                  border: OutlineInputBorder(),
-                                ),
-
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 20,),
-                     Container(
-                        height: 50,
-                        width: 150,
-                        margin: EdgeInsets.symmetric(horizontal: 95),
-                        child: ElevatedButton(
-                            onPressed: () => submit(),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.blue ,
-                              elevation: 10.5,
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(20.0)),
+                      SizedBox(height: 20,),
+                       Container(
+                          height: 50,
+                          width: 150,
+                          margin: EdgeInsets.symmetric(horizontal: 95),
+                          child: ElevatedButton(
+                              onPressed: () => submit(),
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blue ,
+                                elevation: 10.5,
+                                shape: new RoundedRectangleBorder(
+                                    borderRadius: new BorderRadius.circular(20.0)),
+                              ),
+                              child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.white,fontSize: 20),),
                             ),
-                            child: Text(_isLogin ? 'Login' : 'Sign up', style: TextStyle(color: Colors.white,fontSize: 20),),
-                          ),
 
 
-                    ),
+                      ),
 
-                    SizedBox(height: 30,),
-                     Center(child:  TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _isLogin = !_isLogin;
-                        });
-                      },
-                      child: Text(_isLogin
-                          ? 'Create account'
-                          : 'I already have an account', style: TextStyle(color: Color.fromRGBO(49, 39, 79, .6) , fontWeight: FontWeight.bold),),
-                    )),
-                    SizedBox(height: 20,)
-                  ],
+                      SizedBox(height: 30,),
+                       Center(child:  TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _isLogin = !_isLogin;
+                          });
+                        },
+                        child: Text(_isLogin
+                            ? 'Create account'
+                            : 'I already have an account', style: TextStyle(color: Color.fromRGBO(49, 39, 79, .6) , fontWeight: FontWeight.bold),),
+                      )),
+                      SizedBox(height: 20,)
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height *0.4,
-                width: double.infinity,
-                child: InkWell(
+                Container(
+                  height: MediaQuery.of(context).size.height *0.4,
+                  width: double.infinity,
+                  child: InkWell(
 
-                  onTap: ()=>generateAccountForBlindPeople(),
-                  child:Text("") ,
-                ),
-              )
-            ],
+                    onTap: ()=>generateAccountForBlindPeople(),
+                    child:Text("") ,
+                  ),
+                )
+              ],
     ),
+          ),
         ),
-      ),
 
     );
   }
