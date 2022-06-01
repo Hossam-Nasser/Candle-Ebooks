@@ -1,5 +1,7 @@
 //import 'package:AudioBooks/login.dart';
+import 'package:candle_ebookv2/Request.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'Mic.dart';
 import 'books_profile.dart';
@@ -199,12 +201,7 @@ class Nvdrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => MicScreen() ,
-                  //   ),
-                  // );
+                 Get.to(ContactUs());
                 },
                 child: Row(
                   children: const [
@@ -217,7 +214,7 @@ class Nvdrawer extends StatelessWidget {
                       width:15 ,
                     ),
                     Text(
-                      'Help',
+                      'Contact us',
                       style:
                       TextStyle(
                         fontSize: 25,

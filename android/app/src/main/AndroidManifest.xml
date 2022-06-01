@@ -9,7 +9,7 @@
     TextToSpeech.Engine.INTENT_ACTION_TTS_SERVICE
 
    <application
-        android:label="candle_ebookv2"
+        android:label="Candle Ebooks"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

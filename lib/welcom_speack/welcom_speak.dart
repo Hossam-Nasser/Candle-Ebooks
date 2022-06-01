@@ -29,7 +29,4 @@ class TextToSpeech  {
     await flutterTts.setPitch(1);
     await flutterTts.speak(text);
   }
-
-
-
 }

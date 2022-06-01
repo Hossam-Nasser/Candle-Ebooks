@@ -177,7 +177,7 @@ class BookSection extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (ctx) => BooksDetails(
-                      index: 4,
+                      index: 0,
                       section: heading,
                     ),
                   ),
