@@ -1,11 +1,13 @@
 //import 'package:AudioBooks/register.dart';
+import 'dart:convert';
+
 import 'package:candle_ebookv2/register.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Mic.dart';
 import 'welcom_speack/welcom_speak.dart';
-
+import 'json.dart';
 import 'dart:math';
 
 class login extends StatefulWidget {
@@ -13,18 +15,22 @@ class login extends StatefulWidget {
   @override
   State<login> createState() => _loginState();
 }
+var email = TextEditingController();
+var password = TextEditingController();
+var userName = TextEditingController();
+var phoneNumber = TextEditingController();
+LoginValid? uservaild;
 
 class _loginState extends State<login> {
   final _formKey = GlobalKey<FormState>();
 
 
-
   bool _isLogin = true;
 
-  late String _email = "";
-  late String _password = "";
-  late String _username = "";
-  late String _number = "";
+  // late String email = "";
+  // late String _password = "";
+  // late String _username = "";
+  // late String _number = "";
   var  userImageFile;
   void submitFromLogin() {
     final isValid = _formKey.currentState!.validate();
@@ -34,10 +40,6 @@ class _loginState extends State<login> {
       _formKey.currentState!.save();
       // var backendemail = _email;
       // var backendpassword = _password;
-      print('++++++++++++++++++++++++++++++++');
-      print(_email);
-      print(_password);
-      print(_username);
       Get.to(MicScreen());
     }
   }
@@ -48,10 +50,6 @@ class _loginState extends State<login> {
 
     if (isValid) {
       _formKey.currentState!.save();
-      print(_email);
-      print(_password);
-      print(_username);
-      print(_number);
       Get.to(MicScreen());
     }
   }
@@ -120,7 +118,7 @@ class _loginState extends State<login> {
                                       }
                                       return null;
                                     },
-                                    onSaved: (val) => _username = val!,
+                                    onSaved: (val) => userName.text = val!,
                                     decoration: InputDecoration(
                                       labelText: 'Username',
                                       prefixIcon: Icon(
@@ -152,7 +150,7 @@ class _loginState extends State<login> {
                                       }
                                       return null;
                                     },
-                                    onSaved: (val) => _email = val!,
+                                    onSaved: (val) => email.text = val!,
                                     keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
                                       labelText: 'Email',
@@ -176,7 +174,7 @@ class _loginState extends State<login> {
                                       }
                                       return null;
                                     },
-                                    onSaved: (val) => _password = val!,
+                                    onSaved: (val) => password.text = val!,
                                     obscureText: true,
                                     decoration: InputDecoration(
                                       labelText: 'Password',
@@ -207,7 +205,7 @@ class _loginState extends State<login> {
 
                                       return null;
                                     },
-                                    onSaved: (val) => _number = val!,
+                                    onSaved: (val) => phoneNumber.text = val!,
                                     decoration: InputDecoration(
                                       labelText: 'Phone Number',
                                       prefixIcon: Icon(
@@ -280,13 +278,13 @@ class _loginState extends State<login> {
 
   var rng = Random();
   generateAccountForBlindPeople(){
-      _email ="guest${rng.nextInt(1000000)}@yahoo.com";
-      _password ="12345678";
-      _username = "guest${rng.nextInt(1000000)}";
+      email.text ="guest${rng.nextInt(1000000)}@yahoo.com";
+      password.text ="12345678";
+      userName.text = "guest${rng.nextInt(1000000)}";
 
-    print(_email);
-    print(_password);
-    print(_username);
+    print(email);
+    print(password);
+    print(userName);
 
 
     //
