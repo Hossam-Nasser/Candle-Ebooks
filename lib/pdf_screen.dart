@@ -33,7 +33,7 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CodingBoot Flutter PDF Viewer",style: TextStyle(fontWeight: FontWeight.bold),),
+        title: Text("Book",style: TextStyle(fontWeight: FontWeight.bold),),centerTitle: true,
       ),
       body: localPath != null
           ? PDFView(

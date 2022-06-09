@@ -26,20 +26,42 @@ class _loginState extends State<login> {
   late String _username = "";
   late String _number = "";
   var  userImageFile;
-  void submit() {
+  void submitFromLogin() {
     final isValid = _formKey.currentState!.validate();
 
 
     if (isValid) {
       _formKey.currentState!.save();
+      // var backendemail = _email;
+      // var backendpassword = _password;
+      print('++++++++++++++++++++++++++++++++');
+      print(_email);
+      print(_password);
+      print(_username);
       Get.to(MicScreen());
     }
   }
 
+  void submitFromRegister() {
+    final isValid = _formKey.currentState!.validate();
+
+
+    if (isValid) {
+      _formKey.currentState!.save();
+      print(_email);
+      print(_password);
+      print(_username);
+      print(_number);
+      Get.to(MicScreen());
+    }
+  }
+
+
   @override
   void initState() {
     TextToSpeech().speak("Hello and Welcome to Candle Ebooks "
-        "your gate to hall new world of knowldge");
+        "your gate to hall new world of knowledge "
+        "please enter on the bottom of the screen if you cant log in or you cant create account manually");
     super.initState();
   }
 
@@ -207,7 +229,9 @@ class _loginState extends State<login> {
                             height: 50,
                             width: 290,
                             child: ElevatedButton(
-                                onPressed: () => submit(),
+                                onPressed: () {
+                                  _isLogin ?submitFromLogin(): submitFromRegister();
+                                } ,
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.blue ,
                                   elevation: 10.5,

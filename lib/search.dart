@@ -1,3 +1,4 @@
+import 'package:candle_ebookv2/pdf_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,6 @@ class _search_screenState extends State<search_screen> {
 
   List<String> searchTerms = [
     'Prisonar of Zinda',
-    'Deadpool',
     'Lolita ',
     'The Divine Comedy ',
     'Madame Bovary',
@@ -62,9 +62,13 @@ class _search_screenState extends State<search_screen> {
                 child: TextField(
                   controller: _controller,
                   onTap: ()=>CustomSearchDelegate(),
-                  onChanged: (val) {
+                  onSubmitted: (val) {
                     setState(() {
+
                       query = val;
+                      //backend
+                      print(query);
+                      Get.to(PdfViewerPage());
                     });
                   },
                   decoration: InputDecoration(

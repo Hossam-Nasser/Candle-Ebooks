@@ -99,6 +99,7 @@ class _MyAppState extends State<MicScreen> {
               ),
             )
           ],
+
         ),
 
         body:
@@ -106,6 +107,7 @@ class _MyAppState extends State<MicScreen> {
           onTap: (){
             if (isRecord) {
               stopRecording();
+              //backend
               Get.to(PdfViewerPage());
             }
             else {

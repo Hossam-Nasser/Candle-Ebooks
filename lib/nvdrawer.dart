@@ -16,7 +16,7 @@ class Nvdrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
 
-      backgroundColor: Color(0xfffff8ee),
+      backgroundColor: Colors.white,
       child:SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(

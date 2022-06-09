@@ -1,4 +1,3 @@
-
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'Mic.dart';
 import 'Request.dart';
 import 'login.dart';
+import 'new screen.dart';
 import 'pdf_screen.dart';
 void main() {
   runApp(MyApp());

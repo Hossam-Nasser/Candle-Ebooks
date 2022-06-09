@@ -13,10 +13,14 @@ class BooksDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Book> bookList=[];
-    if (section == "Continue Reading") {
+    if (section == "recentBooks") {
       bookList = recentBooks;
     } else if (section == "Discover More") {
       bookList = allBooks;
+    }else if (section == "Trending") {
+      bookList = Trending;
+    }else if (section == "BookShelf") {
+      bookList = BookShelf;
     }
     return Scaffold(
       backgroundColor: Color(0xfffff8ee),

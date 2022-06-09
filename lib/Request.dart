@@ -17,10 +17,14 @@ class Animal {
   Animal({
     required this.id,
     required this.name,
+
   });
 }
 
 class _RequestScreenState extends State<ContactUs> {
+  var _email1 = TextEditingController();
+  var _message1 = TextEditingController();
+  var _problem1 = TextEditingController();
   late String _Problem = "";
   late String _email = "";
   late String _message = "";
@@ -28,14 +32,20 @@ class _RequestScreenState extends State<ContactUs> {
   void initState() {
     _selectedAnimals5 = _animals;
     super.initState();
+
   }
   void submit() {
     final isValid = _formKey.currentState!.validate();
 
-
     if (isValid) {
+      setState(() {
+        _email1.clear();
+      });
+      setState(() {
+        _message1.clear();
+      });
+
       _formKey.currentState!.save();
-      Get.offAll(ContactUs());
       Get.snackbar("Recevied sucsesfully", 'Candle Ebooks team will contact with you soon ',backgroundColor: Colors.green);
     }
 
@@ -80,12 +90,10 @@ class _RequestScreenState extends State<ContactUs> {
               children: [
                 SizedBox(height: 200,),
                 MultiSelectDialogField(
-                  onSaved: (val){
-                    _Problem = val as String ;
-                  },
                   items: _items,
                   title: Text("Problems"),
                   selectedColor: Colors.blue,
+
                   decoration: BoxDecoration(
                     color: Colors.blue.withOpacity(0.1),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -110,6 +118,7 @@ class _RequestScreenState extends State<ContactUs> {
                 ),
                 SizedBox(height: 30,),
                 TextFormField(
+                  controller: _email1,
                   autocorrect: true,
                   enableSuggestions: false,
                   textCapitalization: TextCapitalization.words,
@@ -120,6 +129,7 @@ class _RequestScreenState extends State<ContactUs> {
                     }
                     return null;
                   },
+
                   onSaved: (val) => _email = val!,
                   decoration: InputDecoration(
                     labelText: 'please enter your email ',
@@ -131,6 +141,7 @@ class _RequestScreenState extends State<ContactUs> {
                 ),
                 SizedBox(height: 50,),
                 TextFormField(
+                  controller: _message1,
                   maxLength: 500,
                   maxLines: 5,
                   autocorrect: true,
@@ -168,7 +179,7 @@ class _RequestScreenState extends State<ContactUs> {
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(20.0)),
                       ),
-                      child: Text('Submet', style: TextStyle(color: Colors.white,fontSize: 20),),
+                      child: Text('Submit', style: TextStyle(color: Colors.white,fontSize: 20),),
                     ),
 
 

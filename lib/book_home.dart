@@ -3,11 +3,14 @@
 // import 'package:AudioBooks/search.dart';
 import 'package:candle_ebookv2/search.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'Mic.dart';
 import 'book_data.dart';
 import 'book_model.dart';
 import 'books_details.dart';
 import 'nvdrawer.dart';
+
 
 class BooksHome extends StatelessWidget {
   @override
@@ -16,79 +19,60 @@ class BooksHome extends StatelessWidget {
       drawer:  Drawer(
         child: Nvdrawer(),
       ),
-
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/moti-abebe-Y5v-wkla580-unsplash.jpg"),
-            fit: BoxFit.cover,
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.black45 , Colors.blue],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+            ),
           ),
         ),
-
-        child: Column(
-
-          children: [
-
-            Container(
-              padding: EdgeInsets.only(
-                left: 30,
-                right: 30,
-                top: 70,
-                bottom: 20,
+        title: Center(child: const Text('Candle')),
+        actions: [
+          IconButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => search_screen() ,
               ),
+              );
+            },
+            icon: Icon(Icons.search),
+          ),
+
+        ],
+        leading:  Builder(builder: (context) {
+          return IconButton(
+            onPressed: () => Scaffold.of(context).openDrawer(),
+            icon: Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 30,
+            ),
+          );
+        }),
+
+      ),
+
+      body: Container(
+        child: Column(
+          children: [
+            Container(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Builder(builder: (context) {
-                    return IconButton(
-                      onPressed: () => Scaffold.of(context).openDrawer(),
-                      icon: Icon(
-                        Icons.menu,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-
-                    );
-                  }),
-
-                  // MaterialButton(onPressed: (
-                  //     ){
-                  //   Navigator.push(context, MaterialPageRoute(
-                  //     builder: (context) => MicScreen() ,
-                  //   ),
-                  //   );
-                  // },
-                  //   child: Icon(
-                  //     Icons.mic_none_rounded,
-                  //     color: Colors.white,
-                  //     size: 50,
-                  //   ),
-                  // ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                      size: 35,
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => search_screen() ,
-                       ),
-                      );
-                    },
-                  ),
                 ],
               ),
             ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(
-                  top: 50,
-                  left: 50,
+                  top: 25,
+                  left: 25,
                 ),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xfffff8ee),
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
@@ -125,10 +109,13 @@ class BooksHome extends StatelessWidget {
                         ),
                       ),
                       BookSection(
-                        heading: "Trending",
+                        heading: "recentBooks",
                       ),
                       BookSection(
                         heading: "Discover More",
+                      ),
+                      BookSection(
+                        heading: "Trending",
                       ),
                     ],
                   ),
@@ -148,12 +135,14 @@ class BookSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Book> bookList=[];
-    if (heading == "Trending") {
+    if (heading == "recentBooks") {
       bookList = recentBooks;
     } else if (heading == "Discover More") {
       bookList = allBooks;
     } else if (heading == "BookShelf") {
-      bookList = allBooks;
+      bookList = BookShelf;
+    } else if (heading == "Trending") {
+      bookList = Trending;
     }
     return Container(
       child: Column(
@@ -177,8 +166,8 @@ class BookSection extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (ctx) => BooksDetails(
-                      index: 0,
-                      section: heading,
+                      
+                      section: heading, index: i,
                     ),
                   ),
                 ),
