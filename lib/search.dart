@@ -68,7 +68,8 @@ class _search_screenState extends State<search_screen> {
                       query = val;
                       //backend
                       print(query);
-                      Get.to(PdfViewerPage());
+                      String pdf="https://www.ibm.com/downloads/cas/GJ5QVQ7X";
+                      Get.to(PdfViewerPage() , arguments:pdf );
                     });
                   },
                   decoration: InputDecoration(

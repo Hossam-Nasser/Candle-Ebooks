@@ -1,4 +1,5 @@
 import 'dart:io';
+
 //import 'package:AudioBooks/search.dart';
 import 'package:candle_ebookv2/pdf_screen.dart';
 import 'package:candle_ebookv2/search.dart';
@@ -10,18 +11,14 @@ import 'package:path_provider/path_provider.dart';
 
 import 'book_home.dart';
 
-
 class MicScreen extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MicScreen> {
-
-
-
   File? _audio;
-  FlutterAudioRecorder2?  _recorder;
+  FlutterAudioRecorder2? _recorder;
   Recording? _recording;
   bool isRecord = false;
 
@@ -38,15 +35,12 @@ class _MyAppState extends State<MicScreen> {
         audioFormat: AudioFormat.WAV, sampleRate: 22050);
     await _recorder!.initialized;
 
-
-
     _recorder!.start();
 
     setState(() {
       isRecord = true;
     });
   }
-
 
   Future stopRecording() async {
     var result = await _recorder?.stop();
@@ -59,67 +53,76 @@ class _MyAppState extends State<MicScreen> {
       // this is what we need
     });
   }
+
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-
         appBar: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.black45 , Colors.blue],
+                colors: [Colors.black45, Colors.blue],
                 begin: Alignment.bottomRight,
                 end: Alignment.topLeft,
               ),
             ),
           ),
-          title: const Text('Home',),
+          title: const Text(
+            'Home',
+          ),
           actions: [
             IconButton(
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => search_screen() ,
-                ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => search_screen(),
+                  ),
                 );
               },
               icon: Icon(Icons.search),
             ),
-            MaterialButton(onPressed: (
-                ){
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => BooksHome() ,
-              ),
-              );
-            },
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BooksHome(),
+                  ),
+                );
+              },
               child: Icon(
                 Icons.menu_book_outlined,
                 color: Colors.white,
               ),
             )
           ],
-
         ),
-
-        body:
-        InkWell(
-          onTap: (){
+        body: InkWell(
+          onTap: () {
             if (isRecord) {
               stopRecording();
+
               //backend
-              Get.to(PdfViewerPage());
-            }
-            else {
+
+              /////////////////
+              String pdf="https://www.ibm.com/downloads/cas/GJ5QVQ7X";
+              Get.to(PdfViewerPage() , arguments:pdf );
+            } else {
               startRecording();
             }
           },
           child: Container(
             height: double.infinity,
-
-              child: isRecord?Lottie.asset('assets/images/2887-listen-state.json'): Center(child: Icon(Icons.mic,color: Colors.blue,size: 100,)),
+            child: isRecord
+                ? Lottie.asset('assets/images/2887-listen-state.json')
+                : Center(
+                    child: Icon(
+                    Icons.mic,
+                    color: Colors.blue,
+                    size: 100,
+                  )),
           ),
-        )
-    );
+        ));
   }
 }
