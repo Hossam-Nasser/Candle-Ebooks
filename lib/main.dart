@@ -9,6 +9,7 @@ import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Mic.dart';
 import 'Request.dart';
+import 'api.dart';
 import 'firebaes/books_screen.dart';
 import 'firebaes/hos_screen.dart';
 import 'login.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Hos() ,
+      home: SplashScreen() ,
 
     );
   }

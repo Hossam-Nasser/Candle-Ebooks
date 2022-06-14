@@ -68,7 +68,7 @@ class _search_screenState extends State<search_screen> {
                       query = val;
                       //backend
                       print(query);
-                      String pdf="https://www.ibm.com/downloads/cas/GJ5QVQ7X";
+                      String pdf="https://itbook.store/files/9781617294136/chapter2.pdf";
                       Get.to(PdfViewerPage() , arguments:pdf );
                     });
                     //

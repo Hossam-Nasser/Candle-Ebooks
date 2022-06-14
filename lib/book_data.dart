@@ -2,16 +2,7 @@ import 'book_model.dart';
 import 'json.dart';
 
 List<Book> _allBooks = [
-  Book(
-      name: "Recipie For a Per..",
-      author: "Karma Brown",
-      coverImage: "assets/images/3.jfif",
-      rating: 4.0),
-  Book(
-      name: "The Glass Hotel",
-      author: "Emily St. John Mandel",
-      coverImage: "assets/images/4.jfif",
-      rating: 4.0),
+
   Book(
       name: "Conjure Women",
       author: "Afia Atakora",
@@ -21,6 +12,16 @@ List<Book> _allBooks = [
       name: "Felix Ever After",
       author: "Kacen Callender",
       coverImage: "assets/images/1.jfif",
+      rating: 4.0),
+  Book(
+      name: "Recipie For a Per..",
+      author: "Karma Brown",
+      coverImage: "assets/images/3.jfif",
+      rating: 4.0),
+  Book(
+      name: "The Glass Hotel",
+      author: "Emily St. John Mandel",
+      coverImage: "assets/images/4.jfif",
       rating: 4.0),
   Book(
       name: "From The Ashes",

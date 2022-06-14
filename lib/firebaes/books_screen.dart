@@ -22,21 +22,30 @@ class _BooksScreenFirebaseState extends State<BooksScreenFirebase> {
       ),
       body: SingleChildScrollView(
         child: Container(
+          width: 200,
+          height: 200,
           child: StreamBuilder(
             stream: firestore.collection("books").snapshots(),
             builder: (ctx, AsyncSnapshot<dynamic> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
               }
               final docs = snapshot.data.docs;
               return ListView.builder(
                 itemCount: docs.length,
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Text("${docs[index]["title"]}"),
-                      Text("${docs[index]["author"]}"),
-                    ],
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Text("${docs[index]["title"]}"),
+                        Text("${docs[index]["author"]}"),
+                        Text("${docs[index]["date_added"]}"),
+                        Image.network("${docs[index]["cover"]}")
+
+
+
+                      ],
+                    ),
                   );
                 }
               );
