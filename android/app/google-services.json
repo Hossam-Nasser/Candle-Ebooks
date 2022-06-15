@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "772296149219",
+    "project_id": "candle-ebooks",
+    "storage_bucket": "candle-ebooks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772296149219:android:180551af42bfdc4dd45dd6",
+        "android_client_info": {
+          "package_name": "com.example.hn.candle_ebookv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772296149219-r0a369209t658amn3d4hj1llunbtkl54.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hn.candle_ebookv2",
+            "certificate_hash": "1c59b0fe45cda214ec6d4d4071f0397f9596ccf4"
+          }
+        },
+        {
+          "client_id": "772296149219-a63gr6qi8ght7k9o4h09lrkvp3lc5c8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNYVkOnnEqw94pypswKxvLLHkzNf3aN8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772296149219-a63gr6qi8ght7k9o4h09lrkvp3lc5c8a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
