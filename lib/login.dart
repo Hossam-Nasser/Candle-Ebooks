@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Mic.dart';
+import 'book/view/mic_screen.dart';
 import 'welcom_speack/welcom_speak.dart';
 import 'json.dart';
 import 'dart:math';
@@ -50,7 +51,7 @@ class _loginState extends State<login> {
 
     if (isValid) {
       _formKey.currentState!.save();
-      Get.to(MicScreen());
+      Get.to(MicScreen1());
     }
   }
 
@@ -288,7 +289,7 @@ class _loginState extends State<login> {
 
 
     //
-    Get.to(MicScreen());
+    Get.to(MicScreen1());
   }
 
 

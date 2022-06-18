@@ -10,6 +10,9 @@ import 'package:page_transition/page_transition.dart';
 import 'Mic.dart';
 import 'Request.dart';
 import 'api.dart';
+import 'book/binding.dart';
+import 'book/view/details_screen.dart';
+import 'book/view/home_book.dart';
 import 'firebaes/books_screen.dart';
 import 'firebaes/hos_screen.dart';
 import 'login.dart';
@@ -17,7 +20,7 @@ import 'new screen.dart';
 import 'pdf_screen.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
 
   runApp(MyApp());
 }
@@ -26,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      initialBinding: Binding(),
       home: SplashScreen() ,
 
     );

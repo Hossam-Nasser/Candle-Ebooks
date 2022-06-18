@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'book/models/book_model.dart';
 import 'json.dart';
 
 class api extends StatefulWidget {
@@ -23,10 +24,37 @@ class HomePageState extends State<api> {
     print(data!);
     return "Success!";
   }
+
+  getBook()async {
+
+    List<BookModel?> list = [];
+
+    http.Response response = await http.get(
+        Uri.parse("https://api.itbook.store/1.0/new"));
+
+    final parsed = jsonDecode(response.body);
+
+    try {
+      list = parsed["books"]
+          .map<BookModel>((json) => BookModel.fromJson(json))
+          .toList();
+
+
+
+      return list;
+    } catch (e) {
+      print("//////////////************////////////////////}");
+      print(e.toString());
+    }
+    return list;
+  }
+
+
   @override
   void initState() {
     super.initState();
     this.getData();
+    getBook();
   }
   @override
   Widget build(BuildContext context) {
